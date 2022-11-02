@@ -413,38 +413,7 @@
 	<script>
 		//reloadTasks();
 		
-// function edit(element){
-// 	id = element.querySelector("#task-id").innerText;
-// 	title = element.querySelector("#title").innerText;
-// 	date = element.querySelector("#date").innerText;
-// 	description = element.querySelector("#description").innerText;
-// 	priority = element.querySelector("#priority").innerText;
-// 	type = element.querySelector("#type").innerText;
-// 	// status_ = element.querySelector("#hiba").value;
-// 	console.log(priority);
 
-// 	console.log(priority);
-
-
-// 	$("#modal-task").modal('show');
-// 	btn = document.querySelector("#update").value = id;
-// 	document.querySelector('#modal-task #title').value = title;
-// 	document.querySelector('#modal-task #task-date').value = date;
-// 	document.querySelector('#modal-task #task-description').value = description;
-// 	document.querySelector('#modal-task #task-type-feature').value =type;
-// 	// document.querySelector('#modal-task #task-status').value =status_;
-// 	if(priority == 'High'){
-// 		document.querySelector('#modal-task #task-priority').value = 3;
-// 	}else if(priority == 'Critical'){
-// 		document.querySelector('#modal-task #task-priority').value = 4;
-// 	}else if(priority == 'Medium'){
-// 		document.querySelector('#modal-task #task-priority').value = 2;
-// 	}else if(priority == 'Low'){
-// 		document.querySelector('#modal-task #task-priority').value = 1;
-// 	}
-	
-
-// }
 	</script>
 </body>
 </html>
