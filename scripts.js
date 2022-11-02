@@ -35,7 +35,7 @@ function addbtn(){
     document.getElementById("task-delete-btn").style.display="none";
     document.getElementById("task-update-btn").style.display="none";
     document.getElementById("task-save-btn").style.display="block";
-    document.getElementById("form-task").reset();
+    document.getElementById("form_task").reset();
 
 }
 

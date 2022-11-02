@@ -67,15 +67,44 @@
     }
 
 
+    // function saveTask()
+    // {
+    //     global $conn;
+    //     $title = $_POST['task_name'];
+    //     $type = $_POST['task_type'];
+    //     $priority = $_POST['task_priority'];
+    //     $status = $_POST['task_status'];
+    //     $date = $_POST['task_date'];
+    //     $description = $_POST['task_description'];
+    //     $sql ="INSERT INTO `tasks`(`title`, `type_id`, `priority_id`, `status_id`, `date`, `description`) 
+    //     VALUES ('$title','$type','$priority','$status','$date','$description')";
+    //     // echo $sql;
+    //     $res = mysqli_query($conn,$sql);
+
+    //     $_SESSION['message'] = "Task has been added successfully !";
+	// 	header('location: index.php');
+    // }
     function saveTask()
     {
         global $conn;
-        $title = $_POST['task_name'];
+        
+        if(empty($_POST['task_name'])||empty($_POST['task_description'])||empty($_POST['task_type'])||empty($_POST['task_priority'])||empty($_POST['task_status'])||empty($_POST['task_date'])){
+               
+            $_SESSION['error'] = "Task has not been added  !";
+            header('location: index.php');
+
+
+        }
+        else{
+        $title =test_input($_POST['task_name']) ;
         $type = $_POST['task_type'];
-        $priority = $_POST['task_priority'];
-        $status = $_POST['task_status'];
-        $date = $_POST['task_date'];
-        $description = $_POST['task_description'];
+        $priority =$_POST['task_priority'];
+        $status =$_POST['task_status'];
+        $date =$_POST['task_date'];
+        $description =test_input( $_POST['task_description']);
+
+    
+
         $sql ="INSERT INTO `tasks`(`title`, `type_id`, `priority_id`, `status_id`, `date`, `description`) 
         VALUES ('$title','$type','$priority','$status','$date','$description')";
         // echo $sql;
@@ -83,6 +112,15 @@
 
         $_SESSION['message'] = "Task has been added successfully !";
 		header('location: index.php');
+        }
+    }
+    function test_input($test){
+        
+        $test=htmlspecialchars($test);
+        $test=trim($test);
+        $test=stripslashes($test);
+        return $test;
+
     }
 
     function updateTask()

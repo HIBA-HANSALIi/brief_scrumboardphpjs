@@ -250,6 +250,17 @@
 					<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
 				</div>
 			<?php endif ?>
+			<!-- erreur -->
+			<?php if (isset($_SESSION['error'])): ?>
+				<div class="alert alert-red alert-dismissible fade show">
+				<strong>Error!</strong>
+					<?php 
+						echo $_SESSION['error']; 
+						unset($_SESSION['error']);
+					?>
+					<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+				</div>
+			<?php endif ?>
 			<div class="row">
 					
 				<div class="col-xl-4 col-lg-6">
@@ -336,7 +347,7 @@
 	<div class="modal fade" id="modal-task">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="scripts.php" method="POST" id="form-task">
+				<form action="scripts.php" method="POST" id="form_task">
 					<div class="modal-header">
 						<h5 class="modal-title">Add Task</h5>
 						<a href="#" class="btn-close" data-bs-dismiss="modal"></a>
@@ -346,13 +357,13 @@
 							<input type="hidden" id="task_id" name="task_id" value="">
 							<div class="mb-3">
 								<label class="form-label">Title</label>
-								<input type="text" class="form-control" id="task_title" name="task_name"/>
+								<input type="text" class="form-control" id="task_title" name="task_name" pattern="/^[a-zA-Z1-9]+$/" data-parsley-required/>
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Type</label>
 								<div class="ms-3" id="type">
 									<div class="form-check mb-1">
-										<input class="form-check-input" name="task_type" type="radio" value="1" id="task_type_feature" checked/>
+										<input class="form-check-input" name="task_type" type="radio" value="1" id="task_type_feature" checked />
 										<label class="form-check-label" for="task-type-feature">Feature</label>
 									</div>
 									<div class="form-check">
@@ -364,7 +375,7 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Priority</label>
-								<select class="form-select" id="task_priority" name="task_priority">
+								<select class="form-select" id="task_priority" name="task_priority" data-parsley-required>
 									<option value="">Please select</option>
 									<option value="1">Low</option>
 									<option value="2">Medium</option>
@@ -374,7 +385,7 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Status</label>
-								<select class="form-select" id="task_status" name="task_status">
+								<select class="form-select" id="task_status" name="task_status" data-parsley-required>
 									<option value="">Please select</option>
 									<option value="1" id="todo">To Do</option>
 									<option value="2" id="inprogress">In Progress</option>
@@ -383,7 +394,7 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Date</label>
-								<input type="date" class="form-control" id="task_date" name="task_date"/>
+								<input type="date" class="form-control" id="task_date" name="task_date" data-parsley-required/>
 							</div>
 							<div class="mb-0">
 								<label class="form-label">Description</label>
@@ -409,8 +420,15 @@
 	<script src="assets/js/app.min.js"></script>
 	<!-- ================== END core-js ================== -->
 	<script src="scripts.js"></script>
+	<script src="parsley.js"></script>
+
 
 	<script>
+
+$(document).ready(function(){
+			$('#form_task').parsley();
+			
+		});
 		//reloadTasks();
 		
 
