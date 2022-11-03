@@ -151,7 +151,7 @@
         global $conn;
         $id=$_POST['task_id'];
     
-        $sql="DELETE FROM `tasks` WHERE `id`='$id' ";
+        $sql="DELETE FROM `tasks` WHERE `id`='$id'";
         $res = mysqli_query($conn,$sql);
         //SQL DELETE
         $_SESSION['message'] = "Task has been deleted successfully !";
